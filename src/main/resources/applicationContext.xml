@@ -10,86 +10,82 @@
 
 
 
-    <bean id="userDao" class="com.liao.dao.impl.UserDaoImpl" scope="singleton" init-method="init" destroy-method="destroy">
+<!--    <bean id="userDao" class="com.liao.dao.impl.UserDaoImpl" scope="singleton" init-method="init" destroy-method="destroy">-->
 
-    </bean>
+<!--    </bean>-->
 
-    <bean id="userDao1" class="com.liao.factory.StaticFactoryBean" factory-method="createUserDao"></bean>
+<!--    <bean id="userDao1" class="com.liao.factory.StaticFactoryBean" factory-method="createUserDao"></bean>-->
 
-    <bean id="factoryBean" class="com.liao.factory.DynamicFactoryBean"></bean>
-    <bean id="userDao2" factory-bean="factoryBean" factory-method="createUserDao"></bean>
-
-
-    <bean id="userService" class="com.liao.service.impl.UserServiceImpl">
-        <property name="userDao" ref="userDao"></property>
-    </bean>
-
-    <bean id="userService1" class="com.liao.service.impl.UserServiceImpl" p:userDao-ref="userDao">
-    </bean>
+<!--    <bean id="factoryBean" class="com.liao.factory.DynamicFactoryBean"></bean>-->
+<!--    <bean id="userDao2" factory-bean="factoryBean" factory-method="createUserDao"></bean>-->
 
 
-    <bean id="userService2" class="com.liao.service.impl.UserServiceImpl">
-        <constructor-arg name="userDao" ref="userDao3"></constructor-arg>
-    </bean>
+<!--    <bean id="userService" class="com.liao.service.impl.UserServiceImpl">-->
+<!--        <property name="userDao" ref="userDao"></property>-->
+<!--    </bean>-->
 
-    <bean id="userDao3" class="com.liao.dao.impl.UserDaoImpl">
-        <property name="name" value="Tom"></property>
-        <property name="age" value="28"></property>
-    </bean>
-    <bean id="u1" class="com.liao.User">
-        <property name="userAge" value="13"></property>
-        <property name="username" value="Jenny"></property>
-    </bean>
-    <bean id="u2" class="com.liao.User">
-        <property name="userAge" value="14"></property>
-        <property name="username" value="Will"></property>
-    </bean>
-    <bean id="userDao4" class="com.liao.dao.impl.UserDaoImpl">
-        <property name="name" value="Jack"></property>
-        <property name="age" value="29"></property>
-        <property name="strList">
-            <list>
-                <value>111</value>
-                <value>222</value>
-                <value>333</value>
-            </list>
-        </property>
-        <property name="userList">
-            <list>
-                <bean class="com.liao.User">
-                    <property name="userAge" value="12"></property>
-                    <property name="username" value="Ben"></property>
-                </bean>
-                <ref bean="u1"></ref>
-            </list>
-        </property>
-        <property name="properties">
-            <props>
-                <prop key="k1">aaa</prop>
-                <prop key="k2">bbb</prop>
-                <prop key="k3">ccc</prop>
-            </props>
-        </property>
-        <property name="map">
-            <map>
-                <entry key="ke1" value-ref="u1"></entry>
-                <entry key="ke2" value-ref="u2"></entry>
-            </map>
-        </property>
-
-    </bean>
-    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="password" value="${jdbc.password}"></property>
-        <property name="user" value="${jdbc.username}"></property>
-        <property name="driverClass" value="${jdbc.driver}"></property>
-        <property name="jdbcUrl" value="${jdbc.url}"></property>
-    </bean>
+<!--    <bean id="userService1" class="com.liao.service.impl.UserServiceImpl" p:userDao-ref="userDao">-->
+<!--    </bean>-->
 
 
+<!--    <bean id="userService2" class="com.liao.service.impl.UserServiceImpl">-->
+<!--        <constructor-arg name="userDao" ref="userDao3"></constructor-arg>-->
+<!--    </bean>-->
 
+<!--    <bean id="userDao3" class="com.liao.dao.impl.UserDaoImpl">-->
+<!--        <property name="name" value="Tom"></property>-->
+<!--        <property name="age" value="28"></property>-->
+<!--    </bean>-->
+<!--    <bean id="u1" class="com.liao.User">-->
+<!--        <property name="userAge" value="13"></property>-->
+<!--        <property name="username" value="Jenny"></property>-->
+<!--    </bean>-->
+<!--    <bean id="u2" class="com.liao.User">-->
+<!--        <property name="userAge" value="14"></property>-->
+<!--        <property name="username" value="Will"></property>-->
+<!--    </bean>-->
+<!--    <bean id="userDao4" class="com.liao.dao.impl.UserDaoImpl">-->
+<!--        <property name="name" value="Jack"></property>-->
+<!--        <property name="age" value="29"></property>-->
+<!--        <property name="strList">-->
+<!--            <list>-->
+<!--                <value>111</value>-->
+<!--                <value>222</value>-->
+<!--                <value>333</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="userList">-->
+<!--            <list>-->
+<!--                <bean class="com.liao.User">-->
+<!--                    <property name="userAge" value="12"></property>-->
+<!--                    <property name="username" value="Ben"></property>-->
+<!--                </bean>-->
+<!--                <ref bean="u1"></ref>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="properties">-->
+<!--            <props>-->
+<!--                <prop key="k1">aaa</prop>-->
+<!--                <prop key="k2">bbb</prop>-->
+<!--                <prop key="k3">ccc</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--        <property name="map">-->
+<!--            <map>-->
+<!--                <entry key="ke1" value-ref="u1"></entry>-->
+<!--                <entry key="ke2" value-ref="u2"></entry>-->
+<!--            </map>-->
+<!--        </property>-->
 
-
+<!--    </bean>-->
+<!--    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>-->
+<!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+<!--        <property name="password" value="${jdbc.password}"></property>-->
+<!--        <property name="user" value="${jdbc.username}"></property>-->
+<!--        <property name="driverClass" value="${jdbc.driver}"></property>-->
+<!--        <property name="jdbcUrl" value="${jdbc.url}"></property>-->
+<!--    </bean>-->
+    <context:component-scan base-package="com.liao"></context:component-scan>
 
 
 

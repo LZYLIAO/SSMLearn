@@ -2,14 +2,20 @@ package com.liao.dao.impl;
 
 import com.liao.User;
 import com.liao.dao.UserDao;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
+@Repository("userDao")
 public class UserDaoImpl implements UserDao {
-
+    @Value("Tom")
     private String name;
+    @Value("20")
     private int age;
 
     private List<String> strList;
@@ -70,20 +76,21 @@ public class UserDaoImpl implements UserDao {
 
         System.out.println(name);
         System.out.println(age);
-        System.out.println(strList);
-        for (User u:userList) {
-            System.out.println(u.getUserAge());
-            System.out.println(u.getUsername());
-
-        }
-        System.out.println(properties);
-        System.out.println(map);
+//        System.out.println(strList);
+//        for (User u:userList) {
+//            System.out.println(u.getUserAge());
+//            System.out.println(u.getUsername());
+//
+//        }
+//        System.out.println(properties);
+//        System.out.println(map);
         System.out.println("UserDaoImpl -----> save()");
     }
-
+    @PostConstruct
     public void init(){
         System.out.println("init()");
     }
+    @PreDestroy
     public  void destroy(){
         System.out.println("destroy()");
     }

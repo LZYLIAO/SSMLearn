@@ -53,5 +53,11 @@ public class test01 {
         userDao.save();
 
     }
+    @Test
+    public void testAnnotation(){
+        ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
+        UserService userService=(UserService) app.getBean("userService");
+        userService.save();
+    }
 
 }
