@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,8 @@ public class UserServlet extends HttpServlet {
 //        ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
 //        ApplicationContext app= WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
 
-        ApplicationContext app= WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+        ServletContext context=this.getServletContext();
+        ApplicationContext app= WebApplicationContextUtils.getWebApplicationContext(context);
         UserService userService=(UserService) app.getBean("userService");
         userService.save();
 
