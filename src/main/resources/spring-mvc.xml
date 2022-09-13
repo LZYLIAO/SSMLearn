@@ -25,5 +25,19 @@
 <!--                        </list>-->
 <!--                </property>-->
 <!--        </bean>-->
+<!--        访问静态资源的两种方式-->
+<!--        mapping:请求的地址，location：请求的资源所在的位置-->
+<!--        <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>-->
+<!--        前端控制器找不到资源，交给默认的tomcat服务器找-->
+        <mvc:default-servlet-handler></mvc:default-servlet-handler>
+        <mvc:annotation-driven conversion-service="converterService"></mvc:annotation-driven>
+        <bean id="converterService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+                <property name="converters">
+                        <list>
+                                <bean class="com.liao.converter.DateConverter"></bean>
+                        </list>
+                </property>
+        </bean>
+
 
 </beans>

@@ -9,9 +9,16 @@
 <html>
 <head>
     <title>Title</title>
-    a
+
 </head>
 <body>
-
+        <h1>${pageContext.request.contextPath}</h1>
+    <form action="${pageContext.request.contextPath}/quick13">
+        <input type="text" name="userList[0].username">
+        <input type="text" name="userList[0].userAge">
+        <input type="text" name="userList[1].username">
+        <input type="text" name="userList[1].userAge">
+        <input type="submit" value="提交">
+    </form>
 </body>
 </html>
