@@ -8,11 +8,13 @@ import com.liao.Vo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
@@ -172,5 +174,37 @@ public class UserController {
         System.out.println(jsessionid);
 
     }
+//    单文件上传
+    @RequestMapping("/quick21")
+    @ResponseBody
+//    注意方法参数名和表单的name一致
+    public void fileUpload1(String username, MultipartFile uploadFile) throws IOException {
+        String originalFilename = uploadFile.getOriginalFilename();
+        uploadFile.transferTo(new File("D:\\迅雷云盘\\"+originalFilename));
+
+    }
+//    多文件上传
+    @RequestMapping("/quick22")
+    @ResponseBody
+    public void fileUpload2(String username,MultipartFile[] multipartFiles) throws IOException {
+        for (MultipartFile multipartFile : multipartFiles) {
+            //获取文件名
+            String originalFilename = multipartFile.getOriginalFilename();
+            //保存
+            multipartFile.transferTo(new File("D:\\迅雷云盘\\"+originalFilename));
+        }
+    }
+    //另一种多文件上传
+    @RequestMapping("/quick23")
+    @ResponseBody
+    public void fileUpload3(String username,MultipartFile multipartFile1,MultipartFile multipartFile2) throws IOException {
+        String name1=multipartFile1.getOriginalFilename();
+        String name2=multipartFile2.getOriginalFilename();
+        multipartFile1.transferTo(new File("D:\\迅雷云盘\\"+name1));
+        multipartFile1.transferTo(new File("D:\\迅雷云盘\\"+name2));
+
+    }
+
+
 
 }

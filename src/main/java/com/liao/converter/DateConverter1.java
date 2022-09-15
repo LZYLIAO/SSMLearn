@@ -6,16 +6,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateConverter implements Converter<String, Date> {
+public class DateConverter1 implements Converter<String, Date> {
     @Override
     public Date convert(String source) {
-        SimpleDateFormat format=new SimpleDateFormat("YYYY-MM-dd");
+        SimpleDateFormat format=new SimpleDateFormat("YYYY--MM--dd");
         try {
             Date date=format.parse(source);
             return date;
         }
         catch (ParseException e) {
-            e.printStackTrace();
+
+
         }
         return null;
     }
