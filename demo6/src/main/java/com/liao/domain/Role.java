@@ -37,5 +37,6 @@ public class Role {
                 ", roleName='" + roleName + '\'' +
                 ", roleDesc='" + roleDesc + '\'' +
                 '}';
+
     }
 }
