@@ -45,6 +45,28 @@
 <!--                        </list>-->
 <!--                </property>-->
 <!--        </bean>-->
+<!--        配置拦截器-->
+<!--        <mvc:interceptors>-->
+<!--                <mvc:interceptor>-->
+<!--                        <mvc:mapping path="/**"/>-->
+<!--                        <bean class="com.liao.interceptor.MyInterceptor1"></bean>-->
+<!--                </mvc:interceptor>-->
+<!--                <mvc:interceptor>-->
+<!--                        <mvc:mapping path="/**"/>-->
+<!--                        <bean class="com.liao.interceptor.MyInterceptor2"></bean>-->
+<!--                </mvc:interceptor>-->
+<!--        </mvc:interceptors>-->
 
-
+<!--        <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+<!--&lt;!&ndash;                默认的异常视图&ndash;&gt;-->
+<!--                <property name="defaultErrorView" value="error"></property>-->
+<!--                <property name="exceptionMappings">-->
+<!--                        <map>-->
+<!--&lt;!&ndash;                                异常类型，异常视图&ndash;&gt;-->
+<!--                                <entry key="java.lang.NullPointerException" value="e1"></entry>-->
+<!--                                <entry key="java.io.IOException" value="e2"></entry>-->
+<!--                        </map>-->
+<!--                </property>-->
+<!--        </bean>-->
+        <bean class="com.liao.resolver.MyExceptionHandler"></bean>
 </beans>

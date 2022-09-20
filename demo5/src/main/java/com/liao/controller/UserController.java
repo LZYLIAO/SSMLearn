@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.liao.User;
 import com.liao.Vo;
+import com.liao.exception.MyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -204,7 +208,37 @@ public class UserController {
         multipartFile1.transferTo(new File("D:\\迅雷云盘\\"+name2));
 
     }
+    @RequestMapping("/test")
+    public ModelAndView interceptorTest(){
 
+        System.out.println("方法执行...");
+        ModelAndView modelAndView=new ModelAndView();
+        modelAndView.addObject("username","Tony");
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+    @RequestMapping("/e1")
+    public void exceptionTest1(){
 
+        ArrayList<Object> l=null;
+        System.out.println(l.get(2));
+
+    }
+    @RequestMapping("/e2")
+    public void exceptionTest2() throws FileNotFoundException {
+
+        FileInputStream in=new FileInputStream("absubau.xml");
+    }
+
+    @RequestMapping("/e3")
+    public void exceptionTest3(){
+
+        int a=3/0;
+
+    }
+    @RequestMapping("/e4")
+    public void exceptionTest4() throws MyException {
+        throw new MyException();
+    }
 
 }
