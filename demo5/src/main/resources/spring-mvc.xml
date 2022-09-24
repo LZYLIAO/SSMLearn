@@ -68,5 +68,6 @@
 <!--                        </map>-->
 <!--                </property>-->
 <!--        </bean>-->
+
         <bean class="com.liao.resolver.MyExceptionHandler"></bean>
 </beans>
